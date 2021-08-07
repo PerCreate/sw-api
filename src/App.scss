@@ -32,7 +32,11 @@
     .content {
         width: 100%;
         max-width: 1100px;
-        height: 730px;
+        height: max-content;
+        max-height: 555px;
+    }
+    .list {
+        margin-top: -300px
     }
 
     header {

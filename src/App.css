@@ -31,7 +31,13 @@
 #root .content {
   width: 100%;
   max-width: 1100px;
-  height: 730px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  max-height: 555px;
+}
+#root .list {
+  margin-top: -300px;
 }
 #root header .content {
   height: auto;

@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
-import { Request } from './components/Request';
-import { People } from './components/People';
+import { List } from './components/List';
+import { Sample } from './components/Sample';
 import { Loading } from './components/Loading'
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -35,8 +35,13 @@ class App extends React.Component {
     return !isLoading ?
     <Router>
       <Header />
-      <Route exact path='/' component={() => <Request items={itemsToRequset} />} />
-      <Route path='/people' component={() => <People url={url + 'people'} page='people'/>} />
+      <Route exact path='/' component={() => <List items={itemsToRequset} />} />
+      <Route path='/people' component={() => <Sample url={url + 'people'} page='people'/>} />
+      <Route path='/planets' component={() => <Sample url={url + 'planets'} page='planets'/>} />
+      <Route path='/films' component={() => <Sample url={url + 'films'} page='films'/>} />
+      <Route path='/species' component={() => <Sample url={url + 'species'} page='species'/>} />
+      <Route path='/vehicles' component={() => <Sample url={url + 'vehicles'} page='vehicles'/>} />
+      <Route path='/starships' component={() => <Sample url={url + 'starships'} page='starships'/>} />
       <Footer />
     </Router> : <Loading />
   }

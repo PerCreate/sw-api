@@ -1,10 +1,9 @@
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
-export const Request = (props) => { 
+export const List = (props) => { 
     const { items } = props
-    console.log(items)
     return (
-      <div className='content'>
+      <div className='content list'>
         <table>
           <thead>
             <tr>
