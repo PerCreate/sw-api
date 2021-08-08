@@ -23,7 +23,8 @@ export class Sample extends React.Component {
       countPage: 1,
       prevPage: '',
       nextPage: '',
-      filterBy: ''
+      filterBy: '',
+      links: []
     }
   }
 
@@ -59,6 +60,10 @@ export class Sample extends React.Component {
 
   componentDidMount() {
     this.request()
+  }
+
+  handleClickMenuBtn = (e) => {
+
   }
   
 

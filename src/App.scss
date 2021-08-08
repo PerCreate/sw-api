@@ -55,6 +55,7 @@
     }
 
     table {
+        border-collapse: collapse;
         margin: 0 auto;
         width: 100%;
         table-layout: fixed;
@@ -108,12 +109,16 @@
         width: 132px;
         height: 32px;
         border: 1px solid #969FAF;
+        border-radius: 2px;
         font-size: 14px;
         line-height: 32px;
         text-decoration: none;
         color: #FFFFFF;
     }
-
+    .request-link:hover {
+        color: #1890FF;
+        border: 1px solid #1890FF;
+    }
     .choose-link {
         text-decoration: none;
         color: #FFFFFF;
