@@ -270,7 +270,7 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 20px;
-  color: #000000;
+  color: #FFFFFF;
 }
 #root main section .lists {
   border: 1px solid #6D767F;
@@ -335,6 +335,12 @@
   align-items: center;
   justify-content: center;
 }
+#root main section .lists.films {
+  height: 180px;
+}
+#root main section .lists.films .list-data.active {
+  height: 135px;
+}
 #root .buttons {
   width: 1135px;
   display: flex;
@@ -345,8 +351,27 @@
   width: 32px;
   height: 32px;
   background-color: Transparent;
-  border: 1px solid #D9D9D9;
+  border: none;
   text-align: center;
+}
+#root .buttons .btn.unactive.arrow-left {
+  background-image: url(./img/arrow-left-unactive.png);
+  cursor: default;
+}
+#root .buttons .btn.unactive.arrow-right {
+  background-image: url(./img/arrow-right-unactive.png);
+  cursor: default;
+}
+#root .buttons .btn.text {
+  border: 1px solid #D9D9D9;
+  color: #FFFFFF;
+  font-size: 12px;
+}
+#root .buttons .arrow-right {
+  background-image: url(./img/arrow-right-active.png);
+}
+#root .buttons .arrow-left {
+  background-image: url(./img/arrow-left-active.png);
 }
 #root .buttons .btn:hover {
   cursor: pointer;

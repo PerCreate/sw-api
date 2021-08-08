@@ -46,8 +46,8 @@ export class Films extends React.Component {
   render() {
     const { title, director, episode_id, opening_crawl, producer } = this.state.value
     const { characters, planets, rocketState, filmsState } = this.state
-
-    return (
+    console.log(producer)
+    return producer === undefined ? <></> : (
       <React.Fragment>
         <h1>{title}</h1>
         <div className="icons-data">
@@ -72,7 +72,7 @@ export class Films extends React.Component {
               <div className='text-description'>Producer</div>
             </div>
             <div className='height-data container film'>
-              {producer}
+              {producer.split(',').length > 1 ? producer.split(',')[0] + ' et al.' : producer}
             </div>
           </div>
         </div>
@@ -86,7 +86,7 @@ export class Films extends React.Component {
             </div>
           </div>
 
-        <div className="lists">
+        <div className="lists films">
           <div className="icon-lists">
             <div className={`img-container rockets ${rocketState}`} onClick={this.handleClickRockets}>
                 <div>Planets</div>

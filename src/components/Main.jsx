@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 
 
 export const Main = (props) => {
-  const { page, value, countPage, handleClick } = props
+  const { page, value, countPage, handleClick, stateLeftArr, stateRightArr } = props
   return <>
     <Menu page={page} value={value}>
       {props.children}
       </Menu>
-      <NavButtons handleClick={handleClick} countPage={countPage} />
+      <NavButtons stateLeftArr={stateLeftArr} stateRightArr={stateRightArr} handleClick={handleClick} countPage={countPage} />
     </>
 }
 

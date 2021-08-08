@@ -24,7 +24,7 @@ export class Sample extends React.Component {
       prevPage: '',
       nextPage: '',
       filterBy: '',
-      links: []
+      links: [],
     }
   }
 
@@ -63,19 +63,22 @@ export class Sample extends React.Component {
   }
 
   handleClickMenuBtn = (e) => {
-
+    //choose-link name-character
+    const { links } = this.state
   }
   
 
   render() {
     const value = Object.values(this.state.value)
+    const { nextPage, prevPage } = this.state
     const { page } = this.props
     const currentState = this.state.value
     const prevState = this.state.prevValue //If cuurentState === prevState we don't need render with 'value' prop
-    return currentState === prevState ? <Main page={page} value={value} handleClick={this.handleClick} countPage={this.state.countPage} />: (
+    console.log(prevPage, nextPage)
+    return currentState === prevState ? <Main stateLeftArr={prevPage === null ? 'unactive' : 'active'} stateRightArr={nextPage === null ? 'unactive' : 'active'} page={page} value={value} handleClick={this.handleClick} countPage={this.state.countPage} />: (
       <React.Fragment>
         <Route path={'/' + page}>
-          <Main page={page} value={value} handleClick={this.handleClick} countPage={this.state.countPage}>
+          <Main stateLeftArr={prevPage === null ? 'unactive' : 'active'} stateRightArr={nextPage === null ? 'unactive' : 'active'} page={page} value={value} handleClick={this.handleClick} countPage={this.state.countPage}>
           {value.map((data, index) => {
                   const path = '/' + page + '/' + (index + 1)
                   const { url } = data
