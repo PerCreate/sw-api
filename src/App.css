@@ -30,11 +30,10 @@
 }
 #root .content {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1050px;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
-  max-height: 555px;
 }
 #root .list {
   margin-top: -300px;
@@ -97,6 +96,8 @@
   width: 132px;
   height: 32px;
   border: 1px solid #969FAF;
+  font-size: 14px;
+  line-height: 32px;
   text-decoration: none;
   color: #FFFFFF;
 }
@@ -119,9 +120,10 @@
           animation: loading-circle 4.5s forwards;
 }
 #root main {
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 10fr;
-  grid-template-areas: "title title" "menu name-character";
+  grid-template-columns: 1fr 9fr;
+  grid-template-areas: "title title" "menu section";
 }
 #root main .title {
   grid-area: title;
@@ -129,8 +131,8 @@
   height: 55px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: 25px;
-  border-bottom: solid #484E55 1px;
 }
 #root main .menu {
   grid-area: menu;
@@ -139,9 +141,8 @@
   width: max-content;
 }
 #root main .menu .name-character {
-  grid-area: name-character;
   padding-left: 20px;
-  height: 50px;
+  height: 60px;
   width: 200px;
   display: flex;
   align-items: center;
@@ -149,8 +150,186 @@
   border-bottom: solid #484E55 1px;
 }
 #root main .menu .name-character:hover {
-  background-color: #747f8b;
+  background-color: #32383E;
   cursor: pointer;
+}
+#root main .menu .name-character:active {
+  background-color: #32383E;
+}
+#root main section {
+  overflow-y: hidden;
+  grid-area: section;
+  background-color: #32383E;
+  height: 600px;
+}
+#root main section h1 {
+  height: 32px;
+  margin: 11px 0 17px;
+  font-size: 24px;
+  line-height: 32px;
+  text-shadow: -1px -1px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+#root main section .icons-data {
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+}
+#root main section .icons-data .data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 32px;
+  color: #000000;
+}
+#root main section .icons-data .data .container {
+  width: 157px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #6D767F;
+  border-radius: 0 0 2px 2px;
+  background-color: #6D767F;
+}
+#root main section .icons-data .data .container.film {
+  width: 254px;
+}
+#root main section .icons-data .data .container.film .text-description {
+  color: #E5E5E5;
+}
+#root main section .icons-data .data .img-container {
+  border: 1px solid #6D767F;
+  border-radius: 2px 2px 0 0;
+  background-color: #32383E;
+}
+#root main section .icons-data .data .img-container .birth-year {
+  width: 21px;
+  height: 28px;
+  background-image: url(./img/bitrhyear.png);
+  background-size: auto;
+}
+#root main section .icons-data .data .img-container .gender {
+  width: 28px;
+  height: 28px;
+  background-image: url(./img/gender.png);
+  background-size: auto;
+}
+#root main section .icons-data .data .img-container .height {
+  width: 27px;
+  height: 28px;
+  background-image: url(./img/height.png);
+  background-size: auto;
+}
+#root main section .icons-data .data .img-container .mass {
+  width: 27px;
+  height: 28px;
+  background-image: url(./img/weight.png);
+  background-size: auto;
+}
+#root main section .icons-data .data .img-container .skin-color {
+  width: 21px;
+  height: 28px;
+  background-image: url(./img/skincolor.png);
+  background-size: auto;
+}
+#root main section .icons-data .data.film {
+  width: 254px;
+}
+#root main section .opening {
+  margin: 32px 0 0;
+  padding: 0 15px;
+  width: 850px;
+}
+#root main section .opening .text-description {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  border: 1px solid #6D767F;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 32px;
+}
+#root main section .opening .crawl-container {
+  padding: 16px;
+  background: #6D767F;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+}
+#root main section .lists {
+  border: 1px solid #6D767F;
+  margin: 32px 15px 0;
+  border-radius: 2px;
+  height: 360px;
+}
+#root main section .lists .icon-lists {
+  display: flex;
+  width: 100%;
+}
+#root main section .lists .icon-lists .img-container {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#root main section .lists .icon-lists .img-container .rocket {
+  width: 28px;
+  height: 25.57px;
+  background-image: url(./img/rocket.png);
+  background-repeat: no-repeat;
+}
+#root main section .lists .icon-lists .img-container .film {
+  width: 28px;
+  height: 25.57px;
+  background-image: url(./img/films.png);
+  background-repeat: no-repeat;
+}
+#root main section .lists .icon-lists .img-container:hover {
+  background-color: #6D767F;
+  cursor: pointer;
+}
+#root main section .lists .icon-lists .img-container.active {
+  background-color: #6D767F;
+}
+#root main section .lists .list-data.active {
+  display: block;
+  height: 315px;
+  overflow-y: auto;
+}
+#root main section .lists .list-data.unactive {
+  display: none;
+}
+#root main section .lists .list-note {
+  width: 100%;
+  height: 45px;
+  background-color: #6D767F;
+  border-bottom: solid #6D767F 1px;
+  text-align: center;
+}
+#root .buttons {
+  width: 1050px;
+  display: flex;
+  justify-content: flex-end;
+}
+#root .buttons .btn {
+  margin-right: 8px;
+  width: 32px;
+  height: 32px;
+  background-color: Transparent;
+  border: 1px solid #D9D9D9;
+  text-align: center;
+}
+#root .buttons .btn:hover {
+  cursor: pointer;
+}
+#root .buttons .btn:nth-child(3) {
+  margin: 0;
 }
 
 @-webkit-keyframes loading-circle {

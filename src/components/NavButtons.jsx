@@ -1,11 +1,15 @@
 export const NavButtons = (props) => {
   const { handleClick, countPage } = props
   return (
-    <>
-      <button onClick={handleClick} className='btn-prev'>Prev</button>
-      <input type="text" readOnly="readOnly" value={countPage}/>
-      <button onClick={handleClick} className='btn-next'>Next</button>
-    </>
+    <div className='buttons'>
+      <button onClick={handleClick} className='btn btn-prev'>
+        <div className="arrow-left"></div>
+      </button>
+      <input className='btn' type="text" readOnly="readOnly" value={countPage}/>
+      <button onClick={handleClick} className='btn btn-next'>
+      <div className="arrow-right"></div>
+      </button>
+    </div>
   )
 }
 

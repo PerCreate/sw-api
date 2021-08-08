@@ -18,6 +18,7 @@ export class Sample extends React.Component {
     super(props);
     this.state = {
       value: {},
+      prevValue: {},
       currendPage: '/' + this.props.page,
       countPage: 1,
       prevPage: '',
@@ -48,6 +49,8 @@ export class Sample extends React.Component {
   }
 
   request = (url = this.props.url) => {
+    const { value } = this.state
+    this.setState({ prevValue: value })
     fetch(url)
       .then((request) => request.json())
       .then((request) => this.setState({ value: request.results, prevPage: request.previous, nextPage: request.next }))
@@ -62,8 +65,9 @@ export class Sample extends React.Component {
   render() {
     const value = Object.values(this.state.value)
     const { page } = this.props
-
-    return (
+    const currentState = this.state.value
+    const prevState = this.state.prevValue //If cuurentState === prevState we don't need render with 'value' prop
+    return currentState === prevState ? <Main page={page} value={value} handleClick={this.handleClick} countPage={this.state.countPage} />: (
       <React.Fragment>
         <Route path={'/' + page}>
           <Main page={page} value={value} handleClick={this.handleClick} countPage={this.state.countPage}>

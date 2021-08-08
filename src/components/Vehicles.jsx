@@ -10,7 +10,10 @@ export class Vehicles extends React.Component {
     this.state = {
       value: {},
       pilots: [],
-      films: []
+      films: [],
+      activeList: 'rockets',
+      filmsState: 'unactive',
+      rocketState: 'active',
     }
   }
 
@@ -29,20 +32,90 @@ export class Vehicles extends React.Component {
     .then((request) => request.films)
     .then((films) => films.map((film) => fetch(film).then((data) => data.json()).then((data) => this.setState((prev) => ({ films: [...prev.films, data]}))))) //get films
   }
+
+  handleClickRockets = (e) => {
+    const { activeList } = this.state
+    activeList === 'rockets' ? this.setState({ activeList: 'rockets'}) : this.setState({ activeList: 'rockets', filmsState: 'unactive', rocketState: 'active'})
+  }
+  
+  handleClickFilms = (e) => {
+    const { activeList } = this.state
+    activeList === 'films' ? this.setState({ activeList: 'films'}) : this.setState({ activeList: 'films', filmsState: 'active', rocketState: 'unactive'})
+  }
   
   render() {
-    const { name, passengers, model, length, cost_in_credits } = this.state.value
+    const { name, passengers, model, length, cost_in_credits, crew } = this.state.value
+    const { rocketState, filmsState } = this.state
     const { pilots, films } = this.state
+    console.log(this.state.value)
 
-    return (
+    return model === undefined ? <></> : (
       <React.Fragment>
-        <div>Name: {name}</div>
-        <div>Passengers: {passengers}</div>
-        <div>Model: {model}</div>
-        <div>Length crawl: {length}</div>
-        <div>Cost in credits: {cost_in_credits}</div>
-        <div style={{color: 'red'}}>Pilots:{pilots.length !== 0 ? pilots.map((pilot) => <div key={pilot.name}>{pilot.name}</div>) : ' empty'}</div>
-        <div style={{color: 'green'}}>Films:{films.map((film) => <div key={film.title}>{film.title}</div>)}</div>
+        <h1>{name}</h1>
+        <div className="icons-data">
+          <div className='data'>
+            <div className='img-container container'>
+              <div className='text-description'>Passengers</div>
+            </div>
+            <div className='date container'>
+              {passengers}
+            </div>
+          </div>
+          <div className='data '>
+            <div className='img-container container'>
+              <div className='text-description'>Model</div>
+            </div>
+            <div className='gender-data container'>
+              {model.split(' ')[0]}
+            </div>
+          </div>
+          <div className='data '>
+            <div className='img-container container'>
+              <div className='text-description'>Length</div>
+            </div>
+            <div className='height-data container'>
+              {length}
+            </div>
+          </div>
+          <div className='data '>
+            <div className='img-container container'>
+              <div className='text-description'>Cost in credits</div>
+            </div>
+            <div className='mass-data container'>
+              {cost_in_credits}
+            </div>
+          </div>
+          <div className='data '>
+            <div className='img-container container'>
+              <div className='text-description'>Crew</div>
+            </div>
+            <div className='skin-color-data container'>
+              {crew}
+            </div>
+          </div>
+        </div>
+
+        <div className="lists">
+          <div className="icon-lists">
+            <div className={`img-container rockets ${rocketState}`} onClick={this.handleClickRockets}>
+              <div>
+                Pilots
+              </div>
+            </div>
+            <div className={`img-container films ${filmsState}`} onClick={this.handleClickFilms}>
+              <div className="film">
+                <div className='img'></div>
+              </div>
+            </div>
+          </div>
+          
+          <div className={`list-data ships ${rocketState}`}>{pilots.length !== 0 ? pilots.map((person) => <div className='list-note' key={person.name}>{person.name}</div>) : 
+            <div className='list-note'>
+              None
+            </div>}
+          </div>
+          <div className={`list-data films ${filmsState}`}>{films.map((film) => <div  className='list-note' key={film.title}>{film.title}</div>)}</div>
+        </div>
       </React.Fragment>
     )
   }

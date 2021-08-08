@@ -11,6 +11,9 @@ export class Starships extends React.Component {
       value: {},
       pilots: [],
       films: [],
+      activeList: 'rockets',
+      filmsState: 'unactive',
+      rocketState: 'active',
     }
   }
 
@@ -29,20 +32,86 @@ export class Starships extends React.Component {
     .then((request) => request.films)
     .then((films) => films.map((film) => fetch(film).then((data) => data.json()).then((data) => this.setState((prev) => ({ films: [...prev.films, data]}))))) //get films
   }
+
+  handleClickRockets = (e) => {
+    const { activeList } = this.state
+    activeList === 'rockets' ? this.setState({ activeList: 'rockets'}) : this.setState({ activeList: 'rockets', filmsState: 'unactive', rocketState: 'active'})
+  }
+  
+  handleClickFilms = (e) => {
+    const { activeList } = this.state
+    activeList === 'films' ? this.setState({ activeList: 'films'}) : this.setState({ activeList: 'films', filmsState: 'active', rocketState: 'unactive'})
+  }
   
   render() {
-    const { name, model, max_atmosphering_speed, length, cost_in_credits } = this.state.value
-    const { pilots, films } = this.state
-
-    return (
+    const { name, model, max_atmosphering_speed, length, cost_in_credits, consumables } = this.state.value
+    const { pilots, films, rocketState, filmsState } = this.state
+    console.log(this.state.value)
+    return model === undefined ? <></> : (
       <React.Fragment>
-        <div>Name: {name}</div>
-        <div>Model: {model}</div>
-        <div>Max atmosphering speed: {max_atmosphering_speed}</div>
-        <div>Length crawl: {length}</div>
-        <div>Cost in credits: {cost_in_credits}</div>
-        <div style={{color: 'red'}}>Pilots:{pilots.length !== 0 ? pilots.map((pilot) => <div key={pilot.name}>{pilot.name}</div>) : ' empty'}</div>
-        <div style={{color: 'green'}}>Films:{films.map((film) => <div key={film.title}>{film.title}</div>)}</div>
+        <h1>{name}</h1>
+        <div className="icons-data">
+          <div className='data'>
+            <div className='img-container container'>
+              <div className='text-description'>Max Speed</div>
+            </div>
+            <div className='date container'>
+              {max_atmosphering_speed}
+            </div>
+          </div>
+          <div className='data '>
+            <div className='img-container container'>
+              <div className='text-description'>Model</div>
+            </div>
+            <div className='gender-data container'>
+              {model.split(' ')[0]}
+            </div>
+          </div>
+          <div className='data '>
+            <div className='img-container container'>
+              <div className='text-description'>Length</div>
+            </div>
+            <div className='height-data container'>
+              {length}
+            </div>
+          </div>
+          <div className='data '>
+            <div className='img-container container'>
+              <div className='text-description'>Cost in credits</div>
+            </div>
+            <div className='mass-data container'>
+              {cost_in_credits}
+            </div>
+          </div>
+          <div className='data '>
+            <div className='img-container container'>
+              <div className='text-description'>Consumables</div>
+            </div>
+            <div className='skin-color-data container'>
+              {consumables}
+            </div>
+          </div>
+        </div>
+
+        <div className="lists">
+          <div className="icon-lists">
+            <div className={`img-container rockets ${rocketState}`} onClick={this.handleClickRockets}>
+                <div>Pilots</div>
+            </div>
+            <div className={`img-container films ${filmsState}`} onClick={this.handleClickFilms}>
+              <div className="film">
+                <div></div>
+              </div>
+            </div>
+          </div>
+          
+          <div className={`list-data ships ${rocketState}`}>{pilots.length !== 0 ? pilots.map((person) => <div className='list-note' key={person.name}>{person.name}</div>) : 
+            <div className='list-note'>
+              None
+            </div>}
+          </div>
+          <div className={`list-data films ${filmsState}`}>{films.map((film) => <div  className='list-note' key={film.title}>{film.title}</div>)}</div>
+        </div>
       </React.Fragment>
     )
   }

@@ -10,6 +10,6 @@ export const Main = (props) => {
       {props.children}
       </Menu>
       <NavButtons handleClick={handleClick} countPage={countPage} />
-    <Link className='request-link' to='/'>Back</Link></>
+    </>
 }
 

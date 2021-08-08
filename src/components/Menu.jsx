@@ -12,8 +12,9 @@ export const Menu = (props) => {
   return <div className='content'>
     <main>
       <div className='title'>
-        <span>{isPeople ? 'Who' : 'What'} about do you want to know?</span>
+        <span>{isPeople ? 'Who' : 'What'} do you want to learn about?</span>
         {!isPlanets ? null : null}
+        <Link className='request-link' to='/'>Back</Link>
       </div>
       <div className='menu'>
         {value.map((person, index) => {

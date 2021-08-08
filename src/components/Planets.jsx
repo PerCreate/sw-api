@@ -12,6 +12,9 @@ export class Planets extends React.Component {
       residents: [],
       films: [],
       filterBy: '',
+      activeList: 'rockets',
+      filmsState: 'unactive',
+      rocketState: 'active'
     }
   }
 
@@ -37,21 +40,88 @@ export class Planets extends React.Component {
     .then((request) => request.films)
     .then((film) => film.map((film) => fetch(film).then((data) => data.json()).then((data) => this.setState((prev) => ({ films: [...prev.films, data]}))))) //get films
   }
+
+  handleClickRockets = (e) => {
+    const { activeList } = this.state
+    activeList === 'rockets' ? this.setState({ activeList: 'rockets'}) : this.setState({ activeList: 'rockets', filmsState: 'unactive', rocketState: 'active'})
+  }
+  
+  handleClickFilms = (e) => {
+    const { activeList } = this.state
+    activeList === 'films' ? this.setState({ activeList: 'films'}) : this.setState({ activeList: 'films', filmsState: 'active', rocketState: 'unactive'})
+  }
   
   render() {
     const { name, climate, diameter, surface_water, population, terrain } = this.state.value
-    const { residents, films } = this.state
-    console.log(climate)
-    return (
+    let { residents, films, rocketState, filmsState } = this.state
+
+    return climate === undefined ? <></> : (
       <React.Fragment>
-        <div>Name: {name}</div>
-        <div>Climate: {climate}</div>
-        <div>Diameter: {diameter}</div>
-        <div>Surface water: {surface_water}</div>
-        <div>Population: {population}</div>
-        <div>Terrain: {terrain}</div>
-        <div style={{color: 'red'}}>Residents:{residents.length !== 0 ? residents.map((ship) => <div>{ship.name}</div>) : ' empty'}</div>
-        <div style={{color: 'green'}}>Films:{films.map((film) => <div>{film.title}</div>)}</div>
+        <h1>{name}</h1>
+        <div className="icons-data">
+          <div className='data'>
+            <div className='img-container container'>
+              <div className='text-description'>Climate</div>
+            </div>
+            <div className='date container'>
+              {climate.split(' ')[0].replace(',', '')}
+            </div>
+          </div>
+          <div className='data '>
+            <div className='img-container container'>
+              <div className='text-description'>diameter</div>
+            </div>
+            <div className='gender-data container'>
+              {diameter}
+            </div>
+          </div>
+          <div className='data '>
+            <div className='img-container container'>
+              <div className='text-description'>Surface</div>
+            </div>
+            <div className='height-data container'>
+              {surface_water == 1 ? 'water' : 'no water'}
+            </div>
+          </div>
+          <div className='data '>
+            <div className='img-container container'>
+              <div className='text-description'>Population</div>
+            </div>
+            <div className='mass-data container'>
+              {population}
+            </div>
+          </div>
+          <div className='data '>
+            <div className='img-container container'>
+              <div className='text-description'>Terrain</div>
+            </div>
+            <div className='skin-color-data container'>
+              {terrain.split(' ')[0].replace(',', '')}
+            </div>
+          </div>
+        </div>
+
+        <div className="lists">
+          <div className="icon-lists">
+            <div className={`img-container rockets ${rocketState}`} onClick={this.handleClickRockets}>
+              <div>
+                Residents
+              </div>
+            </div>
+            <div className={`img-container films ${filmsState}`} onClick={this.handleClickFilms}>
+              <div className="film">
+                <div className='img'></div>
+              </div>
+            </div>
+          </div>
+          
+          <div className={`list-data ships ${rocketState}`}>{residents.length !== 0 ? residents.map((resident) => <div className='list-note' key={resident.name}>{resident.name}</div>) : 
+            <div className='list-note'>
+              None
+            </div>}
+          </div>
+          <div className={`list-data films ${filmsState}`}>{films.map((film) => <div  className='list-note' key={film.title}>{film.title}</div>)}</div>
+        </div>
       </React.Fragment>
     )
   }
