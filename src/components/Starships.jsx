@@ -46,7 +46,7 @@ export class Starships extends React.Component {
   render() {
     const { name, model, max_atmosphering_speed, length, cost_in_credits, consumables } = this.state.value
     const { pilots, films, rocketState, filmsState } = this.state
-    console.log(this.state.value)
+
     return model === undefined ? <></> : (
       <React.Fragment>
         <h1>{name}</h1>

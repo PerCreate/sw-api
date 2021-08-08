@@ -46,7 +46,7 @@ export class Films extends React.Component {
   render() {
     const { title, director, episode_id, opening_crawl, producer } = this.state.value
     const { characters, planets, rocketState, filmsState } = this.state
-    console.log(producer)
+
     return producer === undefined ? <></> : (
       <React.Fragment>
         <h1>{title}</h1>

@@ -47,7 +47,6 @@ export class Vehicles extends React.Component {
     const { name, passengers, model, length, cost_in_credits, crew } = this.state.value
     const { rocketState, filmsState } = this.state
     const { pilots, films } = this.state
-    console.log(this.state.value)
 
     return model === undefined ? <></> : (
       <React.Fragment>

@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import Select from 'react-select'
 
 export const Menu = (props) => {
   const { value, page } = props

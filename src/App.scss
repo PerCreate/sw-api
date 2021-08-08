@@ -35,9 +35,6 @@
         max-width: 1135px;
         height: max-content;
     }
-    .list {
-        margin-top: -300px
-    }
 
     header {
         @extend %header-and-footer;
@@ -234,6 +231,9 @@
                         border-radius: 2px 2px 0 0;
                         background-color: #32383E;
                         
+                        .text-description {
+                            color: #FFFFFF;
+                        }
                         .birth-year {
                             width: 21px;
                             height: 28px;
@@ -283,17 +283,16 @@
                     border: 1px solid #6D767F;
                     font-weight: 500;
                     font-size: 18px;
-                    line-height: 32px;
-
-                    
+                    line-height: 32px;                    
                 }
                 .crawl-container {
                     padding: 16px;
-                    background: #6D767F;
+                    background: #3E454B;
                     font-weight: normal;
                     font-size: 16px;
                     line-height: 20px;
                     color: #FFFFFF;
+                    border: 1px solid #6D767F;
                 }
             }
             .lists {
@@ -316,14 +315,29 @@
                         .rocket {
                             width: 28px;
                             height: 25.57px;
-                            background-image: url(./img/rocket.png);
                             background-repeat: no-repeat;
                         }
                         .film {
                             width: 28px;
                             height: 25.57px;
-                            background-image: url(./img/films.png);
+                            
                             background-repeat: no-repeat;
+                        }
+                    }
+                    .img-container.active {
+                        .rocket {
+                            background-image: url(./img/rocket-active.png);
+                        }
+                        .film {
+                            background-image: url(./img/films-active.png);
+                        }
+                    }
+                    .img-container.unactive {
+                        .rocket {
+                            background-image: url(./img/rocket-unactive.png);
+                        }
+                        .film {
+                            background-image: url(./img/films-unactive.png);
                         }
                     }
                     .img-container:hover {

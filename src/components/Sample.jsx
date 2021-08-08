@@ -74,7 +74,7 @@ export class Sample extends React.Component {
     const { page } = this.props
     const currentState = this.state.value
     const prevState = this.state.prevValue //If cuurentState === prevState we don't need render with 'value' prop
-    console.log(prevPage, nextPage)
+
     return currentState === prevState ? <Main stateLeftArr={prevPage === null ? 'unactive' : 'active'} stateRightArr={nextPage === null ? 'unactive' : 'active'} page={page} value={value} handleClick={this.handleClick} countPage={this.state.countPage} />: (
       <React.Fragment>
         <Route path={'/' + page}>

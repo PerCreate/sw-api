@@ -36,9 +36,6 @@
   height: -moz-max-content;
   height: max-content;
 }
-#root .list {
-  margin-top: -300px;
-}
 #root header .content {
   height: auto;
 }
@@ -216,6 +213,9 @@
   border-radius: 2px 2px 0 0;
   background-color: #32383E;
 }
+#root main section .icons-data .data .img-container .text-description {
+  color: #FFFFFF;
+}
 #root main section .icons-data .data .img-container .birth-year {
   width: 21px;
   height: 28px;
@@ -266,11 +266,12 @@
 }
 #root main section .opening .crawl-container {
   padding: 16px;
-  background: #6D767F;
+  background: #3E454B;
   font-weight: normal;
   font-size: 16px;
   line-height: 20px;
   color: #FFFFFF;
+  border: 1px solid #6D767F;
 }
 #root main section .lists {
   border: 1px solid #6D767F;
@@ -292,14 +293,24 @@
 #root main section .lists .icon-lists .img-container .rocket {
   width: 28px;
   height: 25.57px;
-  background-image: url(./img/rocket.png);
   background-repeat: no-repeat;
 }
 #root main section .lists .icon-lists .img-container .film {
   width: 28px;
   height: 25.57px;
-  background-image: url(./img/films.png);
   background-repeat: no-repeat;
+}
+#root main section .lists .icon-lists .img-container.active .rocket {
+  background-image: url(./img/rocket-active.png);
+}
+#root main section .lists .icon-lists .img-container.active .film {
+  background-image: url(./img/films-active.png);
+}
+#root main section .lists .icon-lists .img-container.unactive .rocket {
+  background-image: url(./img/rocket-unactive.png);
+}
+#root main section .lists .icon-lists .img-container.unactive .film {
+  background-image: url(./img/films-unactive.png);
 }
 #root main section .lists .icon-lists .img-container:hover {
   background-color: #6D767F;

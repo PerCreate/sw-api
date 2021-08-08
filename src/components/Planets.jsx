@@ -69,7 +69,7 @@ export class Planets extends React.Component {
           </div>
           <div className='data '>
             <div className='img-container container'>
-              <div className='text-description'>diameter</div>
+              <div className='text-description'>Diameter</div>
             </div>
             <div className='gender-data container'>
               {diameter}

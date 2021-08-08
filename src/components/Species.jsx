@@ -90,10 +90,10 @@ export class Species extends React.Component {
           </div>
           <div className='data '>
             <div className='img-container container'>
-              <div className='text-description'>homeworld</div>
+              <div className='text-description'>Homeworld</div>
             </div>
             <div className='skin-color-data container'>
-              {homeworld.name}
+              {homeworld.name || 'none'}
             </div>
           </div>
         </div>
