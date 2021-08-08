@@ -16,6 +16,7 @@
 }
 
 #root {
+  font-family: "Roboto", sans-serif;
   height: 100vh;
   min-height: 950px;
   display: flex;
@@ -30,7 +31,7 @@
 }
 #root .content {
   width: 100%;
-  max-width: 1050px;
+  max-width: 1135px;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
@@ -120,6 +121,7 @@
           animation: loading-circle 4.5s forwards;
 }
 #root main {
+  font-family: "Roboto", sans-serif;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 9fr;
@@ -132,7 +134,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 25px;
+  font-size: 30px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 32px;
 }
 #root main .menu {
   grid-area: menu;
@@ -143,7 +148,7 @@
 #root main .menu .name-character {
   padding-left: 20px;
   height: 60px;
-  width: 200px;
+  width: 285px;
   display: flex;
   align-items: center;
   font-size: 15px;
@@ -295,7 +300,17 @@
   cursor: pointer;
 }
 #root main section .lists .icon-lists .img-container.active {
-  background-color: #6D767F;
+  background-color: #3E454B;
+}
+#root main section .lists .icon-lists .img-container.unactive.rockets {
+  border: 0.5px solid #6D767F;
+  border-top: none;
+  border-left: none;
+}
+#root main section .lists .icon-lists .img-container.unactive.films {
+  border: 0.5px solid #6D767F;
+  border-top: none;
+  border-right: none;
 }
 #root main section .lists .list-data.active {
   display: block;
@@ -308,12 +323,14 @@
 #root main section .lists .list-note {
   width: 100%;
   height: 45px;
-  background-color: #6D767F;
+  background-color: #3E454B;
   border-bottom: solid #6D767F 1px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #root .buttons {
-  width: 1050px;
+  width: 1135px;
   display: flex;
   justify-content: flex-end;
 }
