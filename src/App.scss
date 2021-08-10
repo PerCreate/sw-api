@@ -174,7 +174,7 @@
                 background-color: #32383E;
                 cursor: pointer;
             }
-            .name-character:active {
+            .name-character.active {
                 background-color: #32383E;
             }
         }
@@ -357,6 +357,13 @@
                         border-top: none;
                         border-right: none;
                     }
+                }
+                .to-films-link {
+                    color: #FFFFFF;
+                    text-decoration: none;
+                }
+                .to-films-link:hover {
+                    color: #0e97f1;
                 }
 
                 .list-data.active {

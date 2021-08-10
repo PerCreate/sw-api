@@ -1,13 +1,11 @@
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { MenuLink } from './MenuLink'
 
 export const Menu = (props) => {
   const { value, page } = props
   const isPeople = page === 'people'
   const isPlanets = page === 'planets' //<Select className='filter' options={options}></Select>
-  const options = [
-    {value: 'population', label: 'Population'},
-    {value: 'diametr', label: 'Diametr'}
-  ]
+
   return <div className='content'>
     <main>
       <div className='title'>
@@ -16,12 +14,8 @@ export const Menu = (props) => {
         <Link className='request-link' to='/'>Back</Link>
       </div>
       <div className='menu'>
-        {value.map((person, index) => {
-          const { name, title } = person
-          return <div key={index + 1}>
-            <Link className='choose-link name-character' to={'/' + page + '/' + (index + 1)}>{name || title}</Link>
-          </div>
-        })}
+        
+        <MenuLink value={value} page={page} />
       </div>
       <section>
         {props.children}

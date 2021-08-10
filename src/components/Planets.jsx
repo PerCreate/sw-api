@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export class Planets extends React.Component {
   static defaultProps = {
@@ -115,12 +116,12 @@ export class Planets extends React.Component {
             </div>
           </div>
           
-          <div className={`list-data ships ${rocketState}`}>{residents.length !== 0 ? residents.map((resident) => <div className='list-note' key={resident.name}>{resident.name}</div>) : 
+          <div className={`list-data ships ${rocketState}`}>{residents.length !== 0 ? residents.map((resident) => <Link onClick={(e)=> e.preventDefault()} className='to-films-link'><div className='list-note' key={resident.name}>{resident.name}</div></Link>) : 
             <div className='list-note'>
               None
             </div>}
           </div>
-          <div className={`list-data films ${filmsState}`}>{films.map((film) => <div  className='list-note' key={film.title}>{film.title}</div>)}</div>
+          <div className={`list-data films ${filmsState}`}>{films.map((film) => <Link className='to-films-link' to={`/films/${film.url.split('')[film.url.length - 2]}`}><div  className='list-note' key={film.title}>{film.title}</div></Link>)}</div>
         </div>
       </React.Fragment>
     )

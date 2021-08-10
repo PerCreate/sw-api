@@ -80,7 +80,7 @@ export class Sample extends React.Component {
         <Route path={'/' + page}>
           <Main stateLeftArr={prevPage === null ? 'unactive' : 'active'} stateRightArr={nextPage === null ? 'unactive' : 'active'} page={page} value={value} handleClick={this.handleClick} countPage={this.state.countPage}>
           {value.map((data, index) => {
-                  const path = '/' + page + '/' + (index + 1)
+                  const path = '/' + page + '/' + data.url.replace(/[^\d]/g, '')
                   const { url } = data
                   switch(page) {
                     case 'people':

@@ -161,7 +161,7 @@
   background-color: #32383E;
   cursor: pointer;
 }
-#root main .menu .name-character:active {
+#root main .menu .name-character.active {
   background-color: #32383E;
 }
 #root main section {
@@ -328,6 +328,13 @@
   border: 0.5px solid #6D767F;
   border-top: none;
   border-right: none;
+}
+#root main section .lists .to-films-link {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+#root main section .lists .to-films-link:hover {
+  color: #0e97f1;
 }
 #root main section .lists .list-data.active {
   display: block;

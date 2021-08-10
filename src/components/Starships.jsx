@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export class Starships extends React.Component {
   static defaultProps = {
@@ -44,9 +45,9 @@ export class Starships extends React.Component {
   }
   
   render() {
-    const { name, model, max_atmosphering_speed, length, cost_in_credits, consumables } = this.state.value
+    const { name, model, max_atmosphering_speed, length, cost_in_credits, consumables, url } = this.state.value
     const { pilots, films, rocketState, filmsState } = this.state
-
+    //url && console.log(url.replace(/[^\d]/g, ''))
     return model === undefined ? <></> : (
       <React.Fragment>
         <h1>{name}</h1>
@@ -105,12 +106,12 @@ export class Starships extends React.Component {
             </div>
           </div>
           
-          <div className={`list-data ships ${rocketState}`}>{pilots.length !== 0 ? pilots.map((person) => <div className='list-note' key={person.name}>{person.name}</div>) : 
+          <div className={`list-data ships ${rocketState}`}>{pilots.length !== 0 ? pilots.map((person) => <Link onClick={(e)=> e.preventDefault()} className='to-films-link' ><div className='list-note' key={person.name}>{person.name}</div></Link>) : 
             <div className='list-note'>
               None
             </div>}
           </div>
-          <div className={`list-data films ${filmsState}`}>{films.map((film) => <div  className='list-note' key={film.title}>{film.title}</div>)}</div>
+          <div className={`list-data films ${filmsState}`}>{films.map((film) => <Link className='to-films-link' to={`/films/${film.url.split('')[film.url.length - 2]}`}><div  className='list-note' key={film.title}>{film.title}</div></Link>)}</div>
         </div>
       </React.Fragment>
     )
