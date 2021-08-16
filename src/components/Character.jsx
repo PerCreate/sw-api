@@ -36,12 +36,12 @@ export class Character extends React.Component {
 
   handleClickRockets = (e) => {
     const { activeList } = this.state
-    activeList === 'rockets' ? this.setState({ activeList: 'rockets'}) : this.setState({ activeList: 'rockets', filmsState: 'unactive', rocketState: 'active'})
+    activeList === 'rockets' ? this.setState({ activeList: 'rockets' }) : this.setState({ activeList: 'rockets', filmsState: 'unactive', rocketState: 'active' })
   }
 
   handleClickFilms = (e) => {
     const { activeList } = this.state
-    activeList === 'films' ? this.setState({ activeList: 'films'}) : this.setState({ activeList: 'films', filmsState: 'active', rocketState: 'unactive'})
+    activeList === 'films' ? this.setState({ activeList: 'films' }) : this.setState({ activeList: 'films', filmsState: 'active', rocketState: 'unactive' })
   }
 
   render() {
@@ -109,15 +109,23 @@ export class Character extends React.Component {
               </div>
             </div>
           </div>
-          
-          <div className={`list-data ships ${rocketState}`}>{starships.length !== 0 ? starships.map((ship) => <Link onClick={(e)=> e.preventDefault()} className='to-films-link'><div className='list-note' key={ship.name}>{ship.name}</div></Link>) : 
-            <div className='list-note'>
-              None
-            </div>}
+
+          <div className={`list-data ships ${rocketState}`}>
+            {starships.length !== 0 ?
+              starships.map((ship) => <Link onClick={(e) => e.preventDefault()} className='to-films-link'>
+                <div className='list-note' key={ship.name}>{ship.name}</div>
+              </Link>)
+              : <div className='list-note'>
+                None
+              </div>}
           </div>
-          <div className={`list-data films ${filmsState}`}>{films.map((film) => <Link className='to-films-link' to={`/films/${film.url.split('')[film.url.length - 2]}`}><div  className='list-note' key={film.title}>{film.title}</div></Link>)}</div>
+          <div className={`list-data films ${filmsState}`}>
+            {films.map((film) => <Link className='to-films-link' to={`/films/${film.url.split('')[film.url.length - 2]}`}>
+              <div className='list-note' key={film.title}>{film.title}</div>
+            </Link>)}
+          </div>
         </div>
-        
+
       </React.Fragment>
     )
   }
